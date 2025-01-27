@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validador de Bandeira de Cartão de Crédito</title>
+    <link rel="stylesheet" href="static/css/main.css">
+</head>
+<body>
+    <div class="conteudo-principal">
+        <form class="formulario" aria-labelledby="formularioTitulo">
+            <h1 id="formularioTitulo" class="conteudo-principal__titulo">Validador de Bandeira de Cartão de Crédito</h1>
+            <label for="numeroCartao" class="formulario__label">Número do Cartão:</label>
+            <input type="text" id="numeroCartao" name="numeroCartao" class="formulario__input" aria-label="Número do Cartão" oninput="verificarCampo()">
+            <div class="formulario__botoes">
+                <button type="button" id="validarBtn" class="formulario__botao formulario__botao--validar" onclick="validarCartao()" disabled aria-label="Validar número do cartão">Validar</button>
+            <button type="button" id="limparBtn" class="formulario__botao formulario__botao--limpar" onclick="limparCampos()" disabled aria-label="Limpar campos">Limpar</button>
+            </div>
+            
+        </form>
+        <div id="resultado" class="resultado" aria-live="polite"></div>
+    </div>
+    <script src="static/js/scripts.js"></script>
+</body>
+</html>
