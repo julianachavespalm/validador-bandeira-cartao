@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Validar a bandeira de cartões de crédito com base nos números fornecidos, garantindo a autenticidade e integridade das informações.
+O objetivo deste projeto é validar a bandeira de cartões de crédito com base nos números fornecidos, garantindo a autenticidade e integridade das informações.
 
 ## Tecnologias Utilizadas
 
@@ -13,7 +13,7 @@ Validar a bandeira de cartões de crédito com base nos números fornecidos, gar
 
 1. Clone o repositório:
     ```bash
-    git clone https://github.com/usuario/validador-bandeira-cartao.git
+    git clone https://github.com/julianachavespalm/validador-bandeira-cartao.git
     ```
 2. Instale as dependências:
     ```bash
@@ -24,19 +24,18 @@ Validar a bandeira de cartões de crédito com base nos números fornecidos, gar
     node script.js
     ```
 
+## Acesso via GitHub Pages
 
-    ## Acesso via GitHub Pages
+Você pode acessar a aplicação diretamente através do GitHub Pages:
 
-    Você pode acessar a aplicação diretamente através do GitHub Pages:
+[Validador de Bandeira de Cartão de Crédito](https://julianachavespalm.github.io/validador-bandeira-cartao/)
 
-    [Validador de Bandeira de Cartão de Crédito](https://julianachavespalm.github.io/validador-bandeira-cartao/)
+### Instruções de Uso
 
-    ### Como Usar
-
-    1. Acesse o link acima.
-    2. Insira o número do cartão no campo fornecido.
-    3. Clique em "Validar" para ver a bandeira do cartão.
-    4. Clique em "Limpar" para limpar o campo "Número do cartão" e o resultado.
+1. Acesse o link acima.
+2. Insira o número do cartão no campo fornecido.
+3. Clique em "Validar" para ver a bandeira do cartão.
+4. Clique em "Limpar" para limpar o campo "Número do cartão" e o resultado.
 
 ## Estrutura Lógica Aplicada
 
