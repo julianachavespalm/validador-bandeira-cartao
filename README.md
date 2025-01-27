@@ -36,6 +36,8 @@ Validar a bandeira de cartões de crédito com base nos números fornecidos, gar
     1. Acesse o link acima.
     2. Insira o número do cartão no campo fornecido.
     3. Clique em "Validar" para ver a bandeira do cartão.
+    4. Clique em "Limpar" para limpar o campo "Número do cartão" e o resultado.
+
 ## Estrutura Lógica Aplicada
 
 O `script.js` implementa a lógica de validação utilizando algoritmos específicos para identificar a bandeira do cartão com base nos dígitos iniciais. O fluxo principal inclui:
