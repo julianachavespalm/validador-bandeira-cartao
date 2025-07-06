@@ -4,22 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Validador de Bandeira de Cartão de Crédito</title>
+    <link rel="shortcut icon" href="./src/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=delete" />
 </head>
-<body>
-    <div class="conteudo-principal">
-        <form class="formulario" aria-labelledby="formularioTitulo">
-            <h1 id="formularioTitulo" class="conteudo-principal__titulo">Validador de Bandeira de Cartão de Crédito</h1>
-            <label for="numeroCartao" class="formulario__label">Número do Cartão:</label>
-            <input type="text" id="numeroCartao" name="numeroCartao" class="formulario__input" aria-label="Número do Cartão" oninput="verificarCampo()">
-            <div class="formulario__botoes">
-                <button type="button" id="validarBtn" class="formulario__botao formulario__botao--validar" onclick="validarCartao()" disabled aria-label="Validar número do cartão">Validar</button>
-            <button type="button" id="limparBtn" class="formulario__botao formulario__botao--limpar" onclick="limparCampos()" disabled aria-label="Limpar campos">Limpar</button>
-            </div>
-            
+<body class="page">
+<main class="validador">
+    <h1 class="validador__titulo">VALIDADOR DE BANDEIRA DE CARTÃO DE CRÉDITO</h1>
+    <div class="validador__tarja">
+        <form class="validador__formulario">
+            <fieldset class="validador__grupo">
+                <legend class="validador__label">Insira o número do cartão *</legend>
+                <input
+                        type="text"
+                        id="numeroCartao"
+                        class="validador__input"
+                        placeholder="0000 0000 0000 0000"
+                        oninput="verificarCampo()">
+            </fieldset>
         </form>
-        <div id="resultado" class="resultado" aria-live="polite"></div>
+        <div class="validador__botoes">
+            <button type="button" id="validarBtn" class="validador__botao validador__botao--validar" onclick="validarCartao()" aria-disabled="true">Ok</button>
+            <button type="button" id="limparBtn" class="validador__botao validador__botao--limpar" onclick="limparCampos()" aria-disabled="true" aria-label="Limpar campo">
+                <span class="material-symbols-outlined">
+                    delete
+                </span>
+            </button>
+        </div>
     </div>
-    <script src="static/js/scripts.js"></script>
+    <p id="resultado"></p>
+</main>
+<footer class="social-media">
+    <p>© 2025 Juliana Chaves Palm</p>
+    <ul class="social-media__links" >
+        <li class="social-media__item">
+            <a href="https://www.linkedin.com/in/julianachavespalm" class="social-media__link"><i class="fa-brands fa-linkedin" title="Linkedin" aria-label="Linkedin"></i></a>
+        </li>
+        <li class="social-media__item"><a href="https://www.github.com/julianachavespalm" class="social-media__link">
+            <i class="fa-brands fa-github-alt" title="Github" aria-label="Github"></i></a></li>
+    </ul>
+    </p>
+
+</footer>
+<script src="static/js/scripts.js"></script>
+<script src="https://kit.fontawesome.com/e0954b0c75.js" crossorigin="anonymous"></script>
 </body>
 </html>
