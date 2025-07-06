@@ -1,6 +1,3 @@
-/**
- * Dicionário contendo as informações de regex e comprimentos válidos para diferentes bandeiras de cartões de crédito.
- */
 const CARTOES = {
     "Visa": { "regex": /^4[0-9]{12}(?:[0-9]{3})?$/, "lengths": [13, 16] },
     "MasterCard": { "regex": /^5[1-5][0-9]{14}$/, "lengths": [16] },
@@ -10,53 +7,57 @@ const CARTOES = {
     "Hipercard": { "regex": /^(606282|3841)[0-9]{10,12}$/, "lengths": [13, 16, 19] }
 };
 
-/**
- * Valida o número do cartão de crédito.
- */
-function validarCartao() {
-    const numeroCartao = document.getElementById('numeroCartao').value.replace(/\s+/g, '');
+function formatarNumeroCartao(value) {
+    const numeroLimpo = value.replace(/\D/g, '');
 
-    if (!/^\d+$/.test(numeroCartao)) {
-        exibirResultado("O número do cartão deve conter apenas dígitos.");
+    const numeroLimitado = numeroLimpo.slice(0, 19);
+
+    const grupos = numeroLimitado.match(/.{1,4}/g);
+    return grupos ? grupos.join(' ') : numeroLimitado;
+}
+
+function verificarCampo() {
+    const input = document.getElementById('numeroCartao');
+    const validarBtn = document.getElementById('validarBtn');
+    const limparBtn = document.getElementById('limparBtn');
+
+    const valorAtual = input.value.replace(/\D/g, '');
+    input.value = formatarNumeroCartao(valorAtual);
+
+    const comprimentoValido = valorAtual.length >= 13 && valorAtual.length <= 19;
+    validarBtn.disabled = !comprimentoValido;
+    limparBtn.disabled = valorAtual.length === 0;
+}
+
+function validarCartao() {
+    const numeroCartao = document.getElementById('numeroCartao').value.replace(/\D/g, '');
+    const resultado = document.getElementById('resultado');
+
+    if (numeroCartao.length < 13 || numeroCartao.length > 19) {
+        resultado.textContent = 'O número deve ter entre 13 e 19 dígitos';
+        resultado.className = 'resultado resultado--erro';
         return;
     }
 
-    for (const [bandeira, info] of Object.entries(CARTOES)) {
-        if (info.lengths.includes(numeroCartao.length) && info.regex.test(numeroCartao)) {
-            exibirResultado(`Cartão ${bandeira} válido.`);
+    for (const [bandeira, config] of Object.entries(CARTOES)) {
+        if (config.regex.test(numeroCartao) && config.lengths.includes(numeroCartao.length)) {
+            resultado.textContent = `${bandeira}`;
+            resultado.className = 'resultado resultado--sucesso';
             return;
         }
     }
 
-    exibirResultado("Bandeira do cartão não reconhecida.");
+    resultado.textContent = 'Número inválido';
+    resultado.className = 'resultado resultado--erro';
 }
 
-/**
- * Limpa os campos de entrada e resultado.
- */
 function limparCampos() {
     document.getElementById('numeroCartao').value = '';
-    exibirResultado('');
+    document.getElementById('resultado').textContent = '';
+    document.getElementById('resultado').className = 'resultado';
     verificarCampo();
 }
 
-/**
- * Verifica o campo de entrada e habilita/desabilita os botões.
- */
-function verificarCampo() {
-    const numeroCartao = document.getElementById('numeroCartao').value;
-    const validarBtn = document.getElementById('validarBtn');
-    const limparBtn = document.getElementById('limparBtn');
-
-    const isDisabled = numeroCartao.trim() === '';
-    validarBtn.disabled = isDisabled;
-    limparBtn.disabled = isDisabled;
-}
-
-/**
- * Exibe o resultado da validação.
- * @param {string} mensagem - A mensagem a ser exibida.
- */
-function exibirResultado(mensagem) {
-    document.getElementById('resultado').innerText = mensagem;
-}
+window.onload = function() {
+    verificarCampo();
+};
